@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Future<bool> alertshowDialog({
   required BuildContext context,
-  required String title,
+  String? title,
   required Widget content,
   required String yesButton,
   bool barrierDismissible = false,
@@ -13,7 +13,7 @@ Future<bool> alertshowDialog({
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) => AlertDialog(
-      title: Text(title),
+      title: title == null ? null : Text(title),
       content: content,
       actions: <Widget>[
         noButton == null

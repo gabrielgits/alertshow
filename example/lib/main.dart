@@ -45,25 +45,36 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Show Dialog'),
               onPressed: () async {
-                final confirmation = await alertshowDialog(
+                await alertshowDialog(
                     context: context,
                     title: title,
                     yesButton: 'Yes',
                     noButton: 'No',
-                    content: const Text(
-                        'This is a message from alertshow dialog. Please press a button:'));
-                if (confirmation) {
+                    content: const SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Text(
+                              'This is a message from alertshow dialog. Please press a button:'),
+                          SizedBox(height: 20),
+                          Text(
+                              'Depending on the button pressed, the message will change'),
+                        ],
+                      ),
+                    )).then((confirmation) {
+                  if (confirmation) {
+                    alertshowSnackbar(
+                      context: context,
+                      message: 'Yes was pressed',
+                    );
+                    return;
+                  }
                   alertshowSnackbar(
                     context: context,
-                    message: 'Yes was pressed',
+                    message: 'No was pressed',
+                    type: AlertshowType.danger,
                   );
-                  return;
-                }
-                alertshowSnackbar(
-                  context: context,
-                  message: 'No was pressed',
-                  type: AlertshowType.danger,
-                );
+                });
               },
             )
           ],
