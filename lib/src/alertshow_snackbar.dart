@@ -9,6 +9,7 @@ void alertshowSnackbar({
   final AlertshowType type = AlertshowType.success,
   final int duration = 3,
   final EdgeInsetsGeometry? padding,
+  final String actionLabel = 'OK',
 }) {
   Color? backgroundColor;
   IconData? icon;
@@ -46,7 +47,7 @@ void alertshowSnackbar({
     backgroundColor: backgroundColor,
     padding: padding,
     action: SnackBarAction(
-      label: 'OK',
+      label: actionLabel,
       textColor: color,
       onPressed: () {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();

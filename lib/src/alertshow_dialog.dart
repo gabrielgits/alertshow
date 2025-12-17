@@ -4,9 +4,9 @@ Future<bool> alertshowDialog({
   required BuildContext context,
   String? title,
   required Widget content,
-  required String yesButton,
+  String yesButton = 'Yes',
   bool barrierDismissible = false,
-  String? noButton,
+  String? noButton = 'No',
 }) async {
   bool confirmation = false;
   await showDialog(

@@ -4,5 +4,5 @@ enum AlertshowType {
   danger,
   warning,
   info,
-  dart,
+  dark,
 }
